@@ -2,7 +2,9 @@ package com.idfinance.model;
 
 import lombok.*;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Getter
 @Setter
@@ -10,9 +12,9 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Builder
 @Entity
-public class Cryptocurrency {
+@ToString(of = {"symbol", "actualPrice"})
+public class Coin {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "symbol")

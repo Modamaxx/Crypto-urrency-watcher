@@ -1,14 +1,17 @@
 package com.idfinance.controller;
 
-import com.idfinance.dto.user.CreateUserRequest;
-import com.idfinance.dto.user.CreateUserResponse;
+import com.idfinance.dto.user.UserRequest;
+import com.idfinance.dto.user.UserResponse;
 import com.idfinance.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
 @RestController
-@RequestMapping("/user")
+@RequestMapping("api/user")
 @RequiredArgsConstructor
 public class UserController {
 
@@ -16,7 +19,7 @@ public class UserController {
 
     @PostMapping("/notify")
     @ResponseStatus(HttpStatus.CREATED)
-    public CreateUserResponse notify(@RequestBody CreateUserRequest user) {
+    public UserResponse notify(@RequestBody @Valid @NotNull UserRequest user) {
         return userService.save(user);
     }
 }

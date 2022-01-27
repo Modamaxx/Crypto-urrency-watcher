@@ -19,11 +19,9 @@ public class User {
     @Column(name = "username")
     private String username;
 
-    @Column(name = "password")
-    private String password;
-
-    @OneToOne
-    private Cryptocurrency cryptoCurrency;
+    @JoinColumn(name = "coin_id")
+    @ManyToOne
+    private Coin coin;
 
     @Column(name = "price")
     private Double price;

@@ -1,21 +1,27 @@
 package com.idfinance.dto.user;
 
+import com.idfinance.model.Coin;
 import com.idfinance.model.User;
 import lombok.*;
+
+import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class CreateUserRequest {
+public class UserRequest {
+    @NotBlank
     private String username;
-    private String password;
+    @NotBlank
+    private String symbol;
 
-    public User toUser() {
+    public User toUser(Coin coin) {
         return User.builder()
                 .username(username)
-                .password(password)
+                .coin(coin)
+                .price(coin.getActualPrice())
                 .build();
     }
 }

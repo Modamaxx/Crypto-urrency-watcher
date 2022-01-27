@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    username: sa
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    password: password
+specific-coin:
+  get-by-id: https://api.coinlore.net/api/ticker/?id=
+notifier:
+  crypto:
+    - id: 90
+      symbol: BTC
+    - id: 80
+      symbol: ETH
+    - id: 48543
+      symbol: SOL
